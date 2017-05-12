@@ -8,7 +8,7 @@ def add_prob_value(the_bigram):
     curr_pos = the_bigram_split[1]
     if prev_pos not in transitions:
         transitions[prev_pos] = {'N':.1, 'V':.1, 'CONJ' : .1, 'PRO' : .1, '</s>' : .1}
-    denom = float(tag_count[prev_pos]) + (len(tag_count.keys()) * .1)
+    denom = float(tag_count[prev_pos] + float(len(tag_count.keys()) * .1))
     transitions[prev_pos][curr_pos] = float(bigrams[the_bigram] + .1)/denom
 
 def add_tag_count(the_pos):
