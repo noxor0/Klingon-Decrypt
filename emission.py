@@ -3,23 +3,27 @@ word_count = {}
 word_pos_count = {}
 emissions = {}
 
-def add_emission(the_bigram):
-    the_bigram_split = the_bigram.split('/')
-    the_word = the_bigram_split[0]
-    the_pos = the_bigram_split[1]
-    if the_word not in emissions:
-        emissions[the_word] = {'N':.1, 'V':.1, 'CONJ' : .1, 'PRO' : .1}
-    emissions[the_word][the_pos] += float(word_pos_count[the_bigram])/word_count[the_word]
-
 # def add_emission(the_bigram):
 #     the_bigram_split = the_bigram.split('/')
 #     the_word = the_bigram_split[0]
 #     the_pos = the_bigram_split[1]
-#     if the_pos not in emissions:
-#         emissions[the_pos] = {'rojHom': .1, 'neH': .1, "ja'chuqmeH": .1,
-#         "pa'Daq": .1, "tera'ngan": .1, 'ghah': .1, 'puq': .1, "'e": .1,
-#         "'eg": .1, 'taH': .1, 'qIp': .1}
-#     emissions[the_pos][the_word] += float(word_pos_count[the_bigram])/tag_count[the_pos]
+#     if the_word not in emissions:
+#         emissions[the_word] = {'N':.1, 'V':.1, 'CONJ' : .1, 'PRO' : .1}
+#
+#     denom = float(tag_count[the_pos]) + (len(tag_count.keys()) * .1)
+#     emissions[the_word][the_pos] = float(word_pos_count[the_bigram] + .1)/denom
+
+def add_emission(the_bigram):
+    the_bigram_split = the_bigram.split('/')
+    the_word = the_bigram_split[0]
+    the_pos = the_bigram_split[1]
+    if the_pos not in emissions:
+        emissions[the_pos] = {'rojHom': .1, 'neH': .1, "ja'chuqmeH": .1,
+        "pa'Daq": .1, "tera'ngan": .1, 'ghah': .1, 'puq': .1, "'e": .1,
+        "'eg": .1, 'taH': .1, 'qIp': .1}
+
+    denom = float(tag_count[the_pos]) + (len(tag_count.keys()) * .1)
+    emissions[the_pos][the_word] = float(word_pos_count[the_bigram] + .1)/denom
 
 def add_tag_count(the_pos):
     the_pos = the_pos.rstrip('\n')
