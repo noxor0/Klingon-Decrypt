@@ -34,12 +34,12 @@ for word in prac_sent:
 
 print best_pos
 
-# print 'emmission table'
-# for key in emm_tbl.keys():
-#     print key, emm_tbl[key]
-#
-# print '------------------------'
-#
-# print 'transition table'
-# for key in trans_tbl.keys():
-#     print key, trans_tbl[key]
+print 'emmission table'
+for key in emm_tbl.keys():
+    print key, emm_tbl[key]
+
+print '------------------------'
+
+print 'transition table'
+for key in trans_tbl.keys():
+    print key, trans_tbl[key]
